@@ -1,0 +1,402 @@
+\documentclass{article}
+%\usepackage[landscape]{geometry}
+\usepackage[a4paper, total={5in, 8.3in}]{geometry}
+\usepackage{url}
+\usepackage{multicol}
+\usepackage{amsmath}
+%\usepackage{esint} % removed because shows \int as \Delta
+% https://stackoverflow.com/questions/68691353/in-latex-the-integral-symbol-int-displays-as-delta-in-the-compiled-pdf-w
+\usepackage{amsfonts}
+\usepackage{tikz}
+\usetikzlibrary{decorations.pathmorphing}
+\usepackage{amsmath,amssymb}
+
+\usepackage{colortbl}
+\usepackage{xcolor}
+\usepackage{mathtools}
+\usepackage{amsmath,amssymb}
+\usepackage{enumitem}
+%\makeatletter
+
+%\newcommand*\bigcdot{\mathpalette\bigcdot@{.5}}
+%\newcommand*\bigcdot@[2]{\mathbin{\vcenter{\hbox{\scalebox{#2}{$\m@th#1\bullet$}}}}}
+%\makeatother
+
+\title{Stats Final Exam Cheat Sheet}
+\usepackage[utf8]{inputenc}
+
+\advance\topmargin-.8in
+\advance\textheight3in
+\advance\textwidth3in
+\advance\oddsidemargin-1.5in
+\advance\evensidemargin-1.5in
+\parindent0pt
+\parskip2pt
+\newcommand{\hr}{\centerline{\rule{3.5in}{1pt}}}
+%\colorbox[HTML]{e4e4e4}{\makebox[\textwidth-2\fboxsep][l]{texto}
+\begin{document}
+
+\begin{center}{\huge{\textbf{Stats Final Exam Cheat Sheet}}}\\
+\end{center}
+\begin{multicols*}{3}
+
+\tikzstyle{mybox} = [draw=black, fill=white, very thick,
+    rectangle, rounded corners, inner sep=10pt, inner ysep=10pt]
+\tikzstyle{fancytitle} =[fill=black, text=white, font=\bfseries]
+
+%------------ Gamma function---------------
+\begin{tikzpicture}
+\node [mybox] (box){%
+    \begin{minipage}{0.3\textwidth}
+    $\Gamma(z) = \int^{\infty}_{0}t^{z - 1} e^{-t} dt$; for $\mathcal{R}(z) > 0$ \\
+    $\Gamma(z + 1) = z \Gamma(z)$; $\Gamma(n + 1) = n!$ for $n \in \mathbb{N}$
+    \end{minipage}
+};
+%------------ Gamma function Header ---------------------
+\node[fancytitle, right=10pt] at (box.north west) {Gamma function};
+\end{tikzpicture}
+
+%------------ Gamma distribution ---------------
+\begin{tikzpicture}
+\node [mybox] (box){%
+    \begin{minipage}{0.3\textwidth}
+    $f_Y(y) = \frac{\beta^{\alpha}}{\Gamma(\alpha)}y^{\alpha - 1}e^{-\beta y}$; $y, \alpha, \beta > 0$ \\
+    $ E[Y] = \alpha / \beta$; $Var(Y) = \alpha / \beta^{2}$ \\
+    MGF$(t)= \left( 1 - \frac{t}{\beta} \right)^{-\alpha}$ for $t < \beta$ \\
+    $\chi^2 (k) \sim \text{Gamma}(k/2, 1/2)$ \\
+    $Y_{i}$ indip. $\text{Gamma}(\alpha_{i}, \beta)$ $\Rightarrow$ $\sum^{n}_{i = 1}Y_{i} \sim \text{Gamma}(\sum^{n}_{i = 1}\alpha_{i}, \beta)$ \\
+    $k * \text{Gamma}(\alpha, \beta) = \text{Gamma}(\alpha, \beta / k)$
+    \end{minipage}
+};
+%------------ Gamma distribution Header ---------------------
+\node[fancytitle, right=10pt] at (box.north west) {Gamma distribution};
+\end{tikzpicture}
+
+%------------  Inverse Gamma distribution ---------------
+\begin{tikzpicture}
+\node [mybox] (box){%
+    \begin{minipage}{0.3\textwidth}
+    $X \sim \text{Gamma}(\alpha, \beta)$
+    $Y = 1/X \sim \text{I-Gamma}(\alpha, \beta)$\\
+    $f_Y(y) = \frac{\beta^{\alpha}}{\Gamma(\alpha)}y^{-\alpha - 1}e^{-\beta / y}$; $y, \alpha, \beta > 0$ \\
+    $ E[Y] = \beta / (\alpha - 1)$; $Var(Y) = \beta^2 / [(\alpha - 1)^{2}(\alpha - 2)]$ \\
+    Mode $ = \beta / (\alpha + 1)$
+    \end{minipage}
+};
+%------------ Inverse Gamma distribution Header ---------------------
+\node[fancytitle, right=10pt] at (box.north west) {Inverse Gamma distribution};
+\end{tikzpicture}
+
+%------------  Inverse Gaussian distribution ---------------
+\begin{tikzpicture}
+\node [mybox] (box){%
+    \begin{minipage}{0.3\textwidth}
+    $Y \sim \text{I-G}(\phi, \lambda)$\\
+    $f_Y(y) = \frac{\sqrt{\lambda}}{\sqrt{2 \pi}}e^{\sqrt{\lambda \phi}}y^{-3/2}\exp\{-\frac{1}{2}\left(\phi y + \frac{\lambda}{y} \right)\}$; $y, \phi \geq 0, \lambda > 0$ \\
+    $ E[Y] = \left( \frac{\lambda}{\phi} \right)^{1/2}$; $Var(Y) = \sqrt{\frac{\lambda}{\phi^3}}$
+    \end{minipage}
+};
+%------------ Inverse Gaussian distribution Header ---------------------
+\node[fancytitle, right=10pt] at (box.north west) {Inverse Gaussian distribution};
+\end{tikzpicture}
+
+%------------  Normal Inverse Gamma distribution ---------------
+\begin{tikzpicture}
+\node [mybox] (box){%
+    \begin{minipage}{0.3\textwidth}
+    $\theta \sim \text{N-IGa}(\eta_0, \lambda_0, \alpha_0, \beta_0)$\\
+    $\sigma^2 \sim \text{IGa}(\alpha_0, \beta_0)$\\
+    $\mu|\sigma^2 \sim \text{N}(\eta_0, \sigma^2/\lambda_0)$\\
+    $f(\mu, \sigma^2) \propto \left(\frac{1}{\sigma^2}\right)^{\alpha_0 + 3/2} \exp\{\lambda_0 \eta_0 \frac{\mu}{\sigma^2} - \frac{1}{2 \sigma^2}(\lambda_0 \eta_0^2 + 2 \beta_0) - \lambda_0 \frac{\mu^2}{2\sigma^2}\}$\\
+    Posterior params (from Normal model s.r.s.):\\
+    $\alpha = \alpha_0 + \frac{n}{2}$, $\lambda = \lambda_0 + n$\\
+    $\eta = \frac{\lambda_0 \eta_0 + n \bar{y}}{\lambda_0 + n}$\\
+    $\beta = \beta_0 + \frac{n}{2}\upsilon^2 + \frac{n \lambda_0}{2(\lambda_0 + n)}(\bar{y} - \eta_0)^2$ \\
+    $\upsilon = n^{-1}\sum^{n}_{i = 1}(y_i - \bar{y})^2$
+
+    \end{minipage}
+};
+%------------ Normal Inverse Gamma distribution Header ---------------------
+\node[fancytitle, right=10pt] at (box.north west) {Normal Inverse Gamma distribution};
+\end{tikzpicture}
+
+%------------ Beta distribution---------------
+\begin{tikzpicture}
+\node [mybox] (box){%
+    \begin{minipage}{0.3\textwidth}
+    $f_Y(y) = \frac{\Gamma(\alpha + \beta)}{\Gamma(\alpha)\Gamma(\beta)} y^{\alpha - 1} (1 - y)^{\beta - 1}$; $\alpha,\beta > 0$, $y \in [0,1]$ \\
+    $E[Y] = \frac{\alpha}{\alpha + \beta}$; $Var(Y) = \frac{\alpha \beta}{(\alpha + \beta)^2 (\alpha + \beta + 1)}$
+    \end{minipage}
+};
+%------------ Beta distribution- Header ---------------------
+\node[fancytitle, right=10pt] at (box.north west) {Beta distribution};
+\end{tikzpicture}
+
+%------------ Normal distribution ---------------
+\begin{tikzpicture}
+\node [mybox] (box){%
+    \begin{minipage}{0.3\textwidth}
+    $f_Y(y) = \frac{\det(A)^{1/2} e^{-\frac{1}{2}b^T A b}}{(2\pi)^{d/2}} \exp\{-\frac{1}{2}(y^T A y) + b^T y\}$ \\
+    $E[Y] = A^{-1}b$; MGF$(t)= \exp\{\mu t + \sigma^2 t^2 / 2 \}$ \\
+    $Y_1|Y_2 = y_2 \sim N(\mu_1 + \Sigma_{12}\Sigma^{-1}_{22}(y_2 - \mu_2); \Sigma_{11} - \Sigma_{12}\Sigma^{-1}_{22}\Sigma_{21})$
+    \end{minipage}
+};
+%------------ Normal distribution Header ---------------------
+\node[fancytitle, right=10pt] at (box.north west) {Multivariate Normal distribution};
+\end{tikzpicture}
+
+
+%------------ t-Student distribution ---------------
+\begin{tikzpicture}
+\node [mybox] (box){%
+    \begin{minipage}{0.3\textwidth}
+    $f_Y(y) = \frac{\Gamma(\frac{\nu + 1}{2})}{\sqrt{\nu \pi} \Gamma (\frac{\nu}{2})} \left(1 + \frac{y^2}{\nu} \right)^{-(\nu + 1)/2}$\\
+    $\nu > 0$
+    \end{minipage}
+};
+%------------ t-Student distribution Header ---------------------
+\node[fancytitle, right=10pt] at (box.north west) {t-Student distribution};
+\end{tikzpicture}
+
+%------------ Uniform distribution topic ---------------
+\begin{tikzpicture}
+\node [mybox] (box){%
+    \begin{minipage}{0.3\textwidth}
+    $Y \sim Unif(a,b)$ \\
+    $f_Y(y) = \frac{1}{b -a}$ for $y \in [a,b]$ otherwise 0\\
+    $F_Y(y) = \frac{y - a}{b - a}$ for $y \in [a,b]$ \\
+    $E[Y] = \frac{1}{2}(a + b)$; $Var(Y) = \frac{1}{12}(b - a)^2$
+    \end{minipage}
+};
+%------------ Uniform distribution Header ---------------------
+\node[fancytitle, right=10pt] at (box.north west) {Uniform distribution};
+\end{tikzpicture}
+
+%------------ Hypergeometric distribution Content ---------------
+\begin{tikzpicture}
+\node [mybox] (box){%
+    \begin{minipage}{0.3\textwidth}
+    $f_Y(y) = \frac{\binom{K}{y}\binom{N - K}{n - y}}{\binom{N}{n}}$\\
+    $E[Y] = n \frac{K}{N}$; $Var(Y) = n \frac{N - K}{N} \frac{K}{N} \frac{N - n}{N - 1}$
+    \end{minipage}
+};
+%------------ Hypergeometric distribution Header ---------------------
+\node[fancytitle, right=10pt] at (box.north west) {Hypergeometric distribution};
+\end{tikzpicture}
+%------------ Negative Binomial Content ---------------------
+\begin{tikzpicture}
+\node [mybox] (box){%
+    \begin{minipage}{0.3\textwidth}
+    $Y =$ "n. of failures till r-th success" \\
+    $f_Y(k) = \binom{k + r - 1}{k} (1 - p)^{k} p^{r}$ \\
+    $E[Y] = \frac{r(1 - p)}{p}$; $Var(Y) = \frac{r(1 - p)}{p^2}$
+    \end{minipage}
+};
+%------------ Negative Binomial Header ---------------------
+\node[fancytitle, right=10pt] at (box.north west) {Negative Binomial distribution};
+\end{tikzpicture}
+
+
+%------------ Another topic ---------------
+\begin{tikzpicture}
+\node [mybox] (box){%
+    \begin{minipage}{0.3\textwidth}
+    $Y \sim Wei(\gamma, \beta)$ $y, \beta, \gamma > 0$\\
+    $f(y) = \gamma \beta^{-\gamma}y^{\gamma - 1} e^{-(y/\beta)^\gamma}$\\
+    $E[Y] = \beta \Gamma(1 + 1/\gamma)$
+    \end{minipage}
+};
+
+%------------ Another topic Header ---------------------
+\node[fancytitle, right=10pt] at (box.north west) {Weibull distribution};
+\end{tikzpicture}
+
+%------------ Series Content ---------------
+\begin{tikzpicture}
+\node [mybox] (box){%
+    \begin{minipage}{0.3\textwidth}
+    $\sum^{n}_{i = 0}r^{i} = \frac{1 - r^{n+1}}{1 - r}$ for $|r| < 1$ \\
+        $ e^x = \sum_{n=0}^{\infty} x^n/{n!} = $ $\lim_{n \rightarrow \infty} \left(1 + \frac{x}{n} \right)^n$ \\
+    $\sum^{n}_{i = 0} \frac{1}{x^p}$ for $p > 1$
+
+
+    \end{minipage}
+};
+%------------ Series Header ---------------------
+\node[fancytitle, right=10pt] at (box.north west) {Series};
+\end{tikzpicture}
+
+
+%------------ Log base change Content ---------------
+\begin{tikzpicture}
+\node [mybox] (box){%
+    \begin{minipage}{0.3\textwidth}
+    $\log_{a}(x) = \frac{\log_{b}(x)}{\log_{b}(a)}$
+    \end{minipage}
+};
+%------------ Log base change Header ---------------------
+\node[fancytitle, right=10pt] at (box.north west) {Log base change};
+\end{tikzpicture}
+
+
+%------------ Derivatives topic ---------------
+\begin{tikzpicture}
+\node [mybox] (box){%
+    \begin{minipage}{0.3\textwidth}
+        $\frac{d}{dx} \sin(x) = \cos(x)$;   $\frac{d}{dx} \cos(x) = -\sin(x)$ \\
+        $\frac{d}{dx} \arcsin(x) = \frac{1}{\sqrt{1 - x^2}}$;
+        $\frac{d}{dx} \arccos(x) = - \frac{1}{\sqrt{1 - x^2}}$ \\
+        $\frac{d}{dx} \tan(x) = \frac{1}{\cos^{2}(x)}$; $\frac{d}{dx} \arctan(x) = \frac{1}{1 + x^2}$
+
+
+    \end{minipage}
+};
+%------------ Derivatives Header ---------------------
+\node[fancytitle, right=10pt] at (box.north west) {Derivatives};
+\end{tikzpicture}
+
+
+%------------ Integrals topic ---------------
+\begin{tikzpicture}
+\node [mybox] (box){%
+    \begin{minipage}{0.3\textwidth}
+    $\int x^k dx = \frac{x^{k + 1}}{k + 1} + C$ $k \neq 1$; $\int \frac{1}{x} dx = \log(|x|) + C$ \\
+    $\int \tan(x) dx = \log(\frac{1}{\cos(x)}) + C$ \\
+    $\int \frac{1}{a^2 + x^2} dx = \frac{1}{a} \arctan(\frac{x}{a}) + C$ \\
+    $\int \frac{1}{\sqrt{a^2 + x^2}} dx = \arcsin(\frac{x}{a}) + C$\\
+    $\int^{\infty}_{0} y^\alpha e^{-ky} dy < \infty$ if $\alpha > - 1$ ($k > 0$)
+
+    \end{minipage}
+};
+%------------ Integrals Header ---------------------
+\node[fancytitle, right=10pt] at (box.north west) {Integrals};
+\end{tikzpicture}
+
+
+
+
+%------------ Taylor expansions ---------------
+\begin{tikzpicture}
+\node [mybox] (box){%
+    \begin{minipage}{0.3\textwidth}
+    $e^x = \sum^{k}_{i = 0} \frac{x^i}{i!} + o(x^k)$ for $x \rightarrow 0$ \\
+    $\log(1 + x) = \sum^{k}_{i = 1} (-1)^{i - 1} \frac{x^{i}}{i} + o(x^k)$ for $x \rightarrow 0$ \\
+    $\sin(x) = \sum^{n}_{i = 0}\frac{(-1)^i x^{2i + 1}}{(2i + 1)!} + o(x^{2n})$ \\ $\cos(x) = \sum^{n}_{i = 0}\frac{(-1)^i x^{2i}}{(2i)!} + o(x^{2n})$
+
+    \end{minipage}
+};
+%------------ Taylor expansions Header ---------------------
+\node[fancytitle, right=10pt] at (box.north west) {Taylor expansions};
+\end{tikzpicture}
+
+
+%------------ Matrix topic ---------------
+\begin{tikzpicture}
+\node [mybox] (box){%
+    \begin{minipage}{0.3\textwidth}
+    $$X = \begin{pmatrix}
+    A & B \\
+    C & D
+    \end{pmatrix}$$
+
+    If $X$ is a $2 \times 2$ matrix:\\
+    $X^{-1} = \frac{1}{\det X} \begin{pmatrix}
+    D & -B \\
+    -C & A
+    \end{pmatrix}$\\
+    $X$ is positive definite if $A > 0$ and $\det X > 0$\\
+
+    If $X$ is a block Matrix $X^{-1}$ has elements:\\
+    $(A - BD^{-1}C)^{-1}$\\
+    $-A^{-1}B(D - CA^{-1}B)^{-1}$\\
+    $-(D - CA^{-1}B)^{-1}CA^{-1}$\\
+     $(D - CA^{-1}B)^{-1}$
+
+
+
+
+    \end{minipage}
+};
+%------------ Matrix Header ---------------------
+\node[fancytitle, right=10pt] at (box.north west) {Matrix};
+\end{tikzpicture}
+
+%------------ Another topic ---------------
+\begin{tikzpicture}
+\node [mybox] (box){%
+    \begin{minipage}{0.3\textwidth}
+    i.i.d continuous case.
+
+    $f_{Y_{(1)},..,Y_{(n)}}(y_{1},.,y_{n}) = n!f(y_1)f(y_2)...f(y_n)$
+
+    $f_{Y(r)}(y_r) = \frac{n!}{(n-r)!(r-1)!}[F(y_r)]^{r-1}f(y_r)[1 - F(y_r)]^{n-r}$
+
+    $f_{Y_(r)Y_(s)}(y,z) = \frac{n!}{(n-s)!(s-r-1)!(r-1)!}[F(y)]^{r-1}f(y)[F(z) - F(s)]^{s-r-1}f(z)[1 - F(z)]^{n-r}$
+
+    \end{minipage}
+};
+%------------ Order Statistics Header ---------------------
+\node[fancytitle, right=10pt] at (box.north west) {Order Statistics};
+\end{tikzpicture}
+
+%------------ Profile pivot ---------------
+\begin{tikzpicture}
+\node [mybox] (box){%
+    \begin{minipage}{0.3\textwidth}
+    Likelihood profile pivot
+    $\theta = (\psi, \lambda)$\\
+    $W_{P_e}(\psi) = (\hat{\psi} - \psi)^T j_P(\hat{\psi}) (\hat{\psi} - \psi)$
+    $W_{P_u}(\psi) = U_P(\psi)^T i^{\psi \psi}_P(\psi, \hat{\lambda_{\psi}}) U_P(\psi)$\\
+    we can use $j^{\psi \psi}(\theta) = (j_{\psi \psi} - j_{\psi \lambda}(j_{\lambda \lambda})^{-1}j_{\lambda \phi})^{-1}$
+
+    \end{minipage}
+};
+%------------ Profile pivot Header ---------------------
+\node[fancytitle, right=10pt] at (box.north west) {Profile pivot};
+\end{tikzpicture}
+
+%------------ Confidence intervals e Test topic ---------------
+\begin{tikzpicture}
+\node [mybox] (box){%
+    \begin{minipage}{0.3\textwidth}
+    Binomial: for $n\theta$, $n(1-\theta) > 5$\\
+    $q_2(\theta, \hat{\theta}) = \frac{\hat{\theta} - \theta}{\sqrt{\frac{\theta(1-\theta)}{n}}}$\\
+    $\frac{{\hat{\theta} + (z_{1-\alpha/2})^2}/2n}{1 + (z_{1-\alpha/2})^2/n} \pm \\
+    \frac{z_{1-\alpha/2}/\sqrt{n}}{1 + (z_{1-\alpha/2})^2/n} \sqrt{\hat{\theta}(1 - \hat{\theta}) + \frac{(z_{1-\alpha/2})^2}{4n}}$\\
+    Clopper Pearson:\\
+    $\{\theta \in (0,1): \mathbb{P}_{\theta}(Y \leq y) \geq \alpha/2  \text{ and } \mathbb{P}_{\theta}(Y \geq y) \geq \alpha/2 \}$ \\
+    Exact distribution test: $n\hat{\theta} \sim Bi(n, \theta)$
+
+    \end{minipage}
+};
+%------------ Confidence intervals and Test Header ---------------------
+\node[fancytitle, right=10pt] at (box.north west) {Confidence intervals and Test};
+\end{tikzpicture}
+
+
+%------------ Netwon - Raphson topic ---------------
+\begin{tikzpicture}
+\node [mybox] (box){%
+    \begin{minipage}{0.3\textwidth}
+    $x_{n + 1} = x_n - \frac{f(x_n)}{f'(x_n)}$
+    \end{minipage}
+};
+%------------ Netwon - Raphson Header ---------------------
+\node[fancytitle, right=10pt] at (box.north west) {Netwon - Raphson};
+\end{tikzpicture}
+
+%------------ Another topic ---------------
+\begin{tikzpicture}
+\node [mybox] (box){%
+    \begin{minipage}{0.3\textwidth}
+    some stuff
+    \end{minipage}
+};
+%------------ Another topic Header ---------------------
+\node[fancytitle, right=10pt] at (box.north west) {Another topic};
+\end{tikzpicture}
+
+
+
+\end{multicols*}
+\end{document}
