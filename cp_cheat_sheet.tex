@@ -312,6 +312,9 @@
     $-(D - CA^{-1}B)^{-1}CA^{-1}$\\
      $(D - CA^{-1}B)^{-1}$
 
+     $i^{\psi \psi} = (i_{\psi \psi} - i_{\psi \lambda}(i_{\lambda \lambda})^{-1}i_{\lambda \psi})^{-1}$ \\
+     $i^{\psi \lambda} = -i^{\psi \psi}i_{\psi \lambda}i_{\lambda \lambda}^{-1}$
+
 
 
 
@@ -365,7 +368,8 @@
     \frac{z_{1-\alpha/2}/\sqrt{n}}{1 + (z_{1-\alpha/2})^2/n} \sqrt{\hat{\theta}(1 - \hat{\theta}) + \frac{(z_{1-\alpha/2})^2}{4n}}$\\
     Clopper Pearson:\\
     $\{\theta \in (0,1): \mathbb{P}_{\theta}(Y \leq y) \geq \alpha/2  \text{ and } \mathbb{P}_{\theta}(Y \geq y) \geq \alpha/2 \}$ \\
-    Exact distribution test: $n\hat{\theta} \sim Bi(n, \theta)$
+    Exact distribution test: $n\hat{\theta} \sim Bi(n, \theta)$\\
+    Mid-pvalue: $\alpha^{oss}_{mid} = \sup_{\theta \in \Theta_0} \{ \mathbb{P}_{\theta}(t(Y) > t(y)) + \frac{1}{2} \mathbb{P}_{\theta}(t(Y) = t(y))\}$
 
     \end{minipage}
 };
@@ -383,6 +387,29 @@
 };
 %------------ Netwon - Raphson Header ---------------------
 \node[fancytitle, right=10pt] at (box.north west) {Netwon - Raphson};
+\end{tikzpicture}
+
+%------------ Total Variance topic ---------------
+\begin{tikzpicture}
+\node [mybox] (box){%
+    \begin{minipage}{0.3\textwidth}
+    $Var(Y)$ $= E[Var(Y|X)] + Var(E[Y|X])$
+    \end{minipage}
+};
+%------------ Total Variance Header ---------------------
+\node[fancytitle, right=10pt] at (box.north west) {Total Variance};
+\end{tikzpicture}
+
+%------------ Delta Method topic ---------------
+\begin{tikzpicture}
+\node [mybox] (box){%
+    \begin{minipage}{0.3\textwidth}
+    $\sqrt{n}(Y_n - \theta) \xrightarrow{D} U$ \\
+    $\sqrt{n}(g(Y_n) - g(\theta)) \xrightarrow{D} g'(\theta) U$
+    \end{minipage}
+};
+%------------ Delta Method Header ---------------------
+\node[fancytitle, right=10pt] at (box.north west) {Delta Method};
 \end{tikzpicture}
 
 %------------ Another topic ---------------

@@ -1,7 +1,7 @@
-# Probability Exam Cheat Sheet
+# Stats Exam Cheat Sheet
 
 ## Description
-Some formulas used in the probability exam.
+Some formulas used in the stats exam.
 The files come without any warranty.
 
 ## Usage
