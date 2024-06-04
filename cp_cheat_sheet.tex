@@ -412,6 +412,19 @@
 \node[fancytitle, right=10pt] at (box.north west) {Delta Method};
 \end{tikzpicture}
 
+
+%------------ Posterior Predicitive Density topic ---------------
+\begin{tikzpicture}
+\node [mybox] (box){%
+    \begin{minipage}{0.3\textwidth}
+    if $(y^*|y,\theta) = (y^*|\theta)$\\
+    $p(y^{*}|y) = \int p(y^{*}|\theta)p(\theta|y)d\theta$
+    \end{minipage}
+};
+%------------ APosterior Predicitive Density Header ---------------------
+\node[fancytitle, right=10pt] at (box.north west) {Posterior Predicitive Density};
+\end{tikzpicture}
+
 %------------ Another topic ---------------
 \begin{tikzpicture}
 \node [mybox] (box){%
