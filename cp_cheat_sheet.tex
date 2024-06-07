@@ -137,8 +137,9 @@
 \node [mybox] (box){%
     \begin{minipage}{0.3\textwidth}
     $f_Y(y) = \frac{\det(A)^{1/2} e^{-\frac{1}{2}b^T A b}}{(2\pi)^{d/2}} \exp\{-\frac{1}{2}(y^T A y) + b^T y\}$ \\
-    $E[Y] = A^{-1}b$; MGF$(t)= \exp\{\mu t + \sigma^2 t^2 / 2 \}$ \\
-    $Y_1|Y_2 = y_2 \sim N(\mu_1 + \Sigma_{12}\Sigma^{-1}_{22}(y_2 - \mu_2); \Sigma_{11} - \Sigma_{12}\Sigma^{-1}_{22}\Sigma_{21})$
+    $E[Y] $=$ A^{-1}b$;MGF$(t)$= $\exp\{\mu t + \sigma^2 t^2 / 2 \}$ \\
+    $Y_1|Y_2 = y_2 \sim N(\mu_1 + \Sigma_{12}\Sigma^{-1}_{22}(y_2 - \mu_2); \Sigma_{11} - \Sigma_{12}\Sigma^{-1}_{22}\Sigma_{21})$ \\
+    $X|\mu \sim N(\mu, \sigma^2)$ and $\mu \sim N(\gamma, \tau^2)$\\ $X \sim N(\gamma, \sigma^2 + \tau^2)$
     \end{minipage}
 };
 %------------ Normal distribution Header ---------------------
@@ -188,7 +189,7 @@
 \node [mybox] (box){%
     \begin{minipage}{0.3\textwidth}
     $Y =$ "n. of failures till r-th success" \\
-    $f_Y(k) = \binom{k + r - 1}{k} (1 - p)^{k} p^{r}$ \\
+    $f_Y(k) = \binom{k + r - 1}{k} (1 - p)^{k} p^{r}$; $\frac{\Gamma(k + r)}{k!\Gamma(r)}$ \\
     $E[Y] = \frac{r(1 - p)}{p}$; $Var(Y) = \frac{r(1 - p)}{p^2}$
     \end{minipage}
 };
