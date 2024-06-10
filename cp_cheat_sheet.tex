@@ -63,7 +63,7 @@
     $f_Y(y) = \frac{\beta^{\alpha}}{\Gamma(\alpha)}y^{\alpha - 1}e^{-\beta y}$; $y, \alpha, \beta > 0$ \\
     $ E[Y] = \alpha / \beta$; $Var(Y) = \alpha / \beta^{2}$ \\
     MGF$(t)= \left( 1 - \frac{t}{\beta} \right)^{-\alpha}$ for $t < \beta$ \\
-    $\chi^2 (k) \sim \text{Gamma}(k/2, 1/2)$ \\
+    $\chi^2_{k} \sim \text{Gamma}(k/2, 1/2)$ \\
     $Y_{i}$ indip. $\text{Gamma}(\alpha_{i}, \beta)$ $\Rightarrow$ $\sum^{n}_{i = 1}Y_{i} \sim \text{Gamma}(\sum^{n}_{i = 1}\alpha_{i}, \beta)$ \\
     $k * \text{Gamma}(\alpha, \beta) = \text{Gamma}(\alpha, \beta / k)$
     \end{minipage}
@@ -173,6 +173,61 @@
 \node[fancytitle, right=10pt] at (box.north west) {Uniform distribution};
 \end{tikzpicture}
 
+%------------ Cauchy distribution topic ---------------
+\begin{tikzpicture}
+\node [mybox] (box){%
+    \begin{minipage}{0.3\textwidth}
+    $Y \sim Cau(\mu,\sigma)$ \\
+    $f_Y(y) = \left\{\pi \sigma \left(1 + \left(\frac{y-\mu}{\sigma}\right)^2 \right) \right\}^{-1}$
+
+    \end{minipage}
+};
+%------------ Cauchy distribution Header ---------------------
+\node[fancytitle, right=10pt] at (box.north west) {Cauchy distribution};
+\end{tikzpicture}
+
+%------------ F distribution topic ---------------
+\begin{tikzpicture}
+\node [mybox] (box){%
+    \begin{minipage}{0.3\textwidth}
+    $Y \sim F(\nu_1,\nu_2)$ $y, \nu_1, \nu_2 > 0$\\
+    $f_Y(y)=$ $\frac{(\nu_1 / \nu_2)^{\nu_1 / 2} y^{\nu_1 / 2 - 1}}{B(\nu_1 / 2,\nu_2 / 2) [1 + (\nu_1 / \nu_2)y]^{(\nu_1 + \nu_2) / 2}}$ \\
+    $E[Y] = \frac{\nu_2}{\nu_2 - 2}$
+
+    \end{minipage}
+};
+%------------ F distribution Header ---------------------
+\node[fancytitle, right=10pt] at (box.north west) {F distribution};
+\end{tikzpicture}
+
+%------------ Logistic distribution topic ---------------
+\begin{tikzpicture}
+\node [mybox] (box){%
+    \begin{minipage}{0.3\textwidth}
+    $Y \sim L(\mu,\sigma)$; $\mu \in \mathbb{R}$
+    $f(y) = \frac{e^{-(y-\mu)/ \sigma}}{\sigma (1 + e^{-(y - \mu)/ \sigma})^2}$; $E[Y]$ = Median = Mode = $\mu$;
+    $Var(Y)= \frac{\sigma^2 \pi}{3}$
+
+    \end{minipage}
+};
+%------------ Logistic distribution Header ---------------------
+\node[fancytitle, right=10pt] at (box.north west) {Logistic distribution};
+\end{tikzpicture}
+
+%------------ Log Normal distribution topic ---------------
+\begin{tikzpicture}
+\node [mybox] (box){%
+    \begin{minipage}{0.3\textwidth}
+    $Y \sim LN(\mu,\sigma)$; $y > 0$\\
+    $f(y) = \frac{1}{y \sigma \sqrt{2 \pi}} \exp\left\{ - \frac{(\log(y) - \mu)^2}{2 \sigma^2} \right\}$\\
+    $E[Y]$ = $\exp \left\{\mu + \frac{\sigma^2}{2} \right\}$; Mode = $exp \left\{\mu - \sigma^2 \right\}$
+
+    \end{minipage}
+};
+%------------ Log Normaldistribution Header ---------------------
+\node[fancytitle, right=10pt] at (box.north west) {Log Normal distribution};
+\end{tikzpicture}
+
 %------------ Hypergeometric distribution Content ---------------
 \begin{tikzpicture}
 \node [mybox] (box){%
@@ -218,7 +273,8 @@
     \begin{minipage}{0.3\textwidth}
     $\sum^{n}_{i = 0}r^{i} = \frac{1 - r^{n+1}}{1 - r}$ for $|r| < 1$ \\
         $ e^x = \sum_{n=0}^{\infty} x^n/{n!} = $ $\lim_{n \rightarrow \infty} \left(1 + \frac{x}{n} \right)^n$ \\
-    $\sum^{n}_{i = 0} \frac{1}{x^p}$ for $p > 1$
+    $\sum^{n}_{i = 0} \frac{1}{x^p}$ for $p > 1$ \\
+    $\int^{\infty}_{0} y^\alpha e^{-ky} dy < \infty$ if $\alpha > - 1$ ($k > 0$)
 
 
     \end{minipage}
@@ -238,42 +294,6 @@
 %------------ Log base change Header ---------------------
 \node[fancytitle, right=10pt] at (box.north west) {Log base change};
 \end{tikzpicture}
-
-
-%------------ Derivatives topic ---------------
-\begin{tikzpicture}
-\node [mybox] (box){%
-    \begin{minipage}{0.3\textwidth}
-        $\frac{d}{dx} \sin(x) = \cos(x)$;   $\frac{d}{dx} \cos(x) = -\sin(x)$ \\
-        $\frac{d}{dx} \arcsin(x) = \frac{1}{\sqrt{1 - x^2}}$;
-        $\frac{d}{dx} \arccos(x) = - \frac{1}{\sqrt{1 - x^2}}$ \\
-        $\frac{d}{dx} \tan(x) = \frac{1}{\cos^{2}(x)}$; $\frac{d}{dx} \arctan(x) = \frac{1}{1 + x^2}$
-
-
-    \end{minipage}
-};
-%------------ Derivatives Header ---------------------
-\node[fancytitle, right=10pt] at (box.north west) {Derivatives};
-\end{tikzpicture}
-
-
-%------------ Integrals topic ---------------
-\begin{tikzpicture}
-\node [mybox] (box){%
-    \begin{minipage}{0.3\textwidth}
-    $\int x^k dx = \frac{x^{k + 1}}{k + 1} + C$ $k \neq 1$; $\int \frac{1}{x} dx = \log(|x|) + C$ \\
-    $\int \tan(x) dx = \log(\frac{1}{\cos(x)}) + C$ \\
-    $\int \frac{1}{a^2 + x^2} dx = \frac{1}{a} \arctan(\frac{x}{a}) + C$ \\
-    $\int \frac{1}{\sqrt{a^2 + x^2}} dx = \arcsin(\frac{x}{a}) + C$\\
-    $\int^{\infty}_{0} y^\alpha e^{-ky} dy < \infty$ if $\alpha > - 1$ ($k > 0$)
-
-    \end{minipage}
-};
-%------------ Integrals Header ---------------------
-\node[fancytitle, right=10pt] at (box.north west) {Integrals};
-\end{tikzpicture}
-
-
 
 
 %------------ Taylor expansions ---------------
@@ -331,11 +351,13 @@
     \begin{minipage}{0.3\textwidth}
     i.i.d continuous case.
 
-    $f_{Y_{(1)},..,Y_{(n)}}(y_{1},.,y_{n}) = n!f(y_1)f(y_2)...f(y_n)$
+    $f_{Y_{(1)},..,Y_{(n)}}(y_{1},.,y_{n}) $=$ n!f(y_1)f(y_2)...f(y_n)$
 
-    $f_{Y(r)}(y_r) = \frac{n!}{(n-r)!(r-1)!}[F(y_r)]^{r-1}f(y_r)[1 - F(y_r)]^{n-r}$
+    $f_{Y(r)}(y_r) $=$ \frac{n![F(y_r)]^{r-1}f(y_r)[1 - F(y_r)]^{n-r}}{(n-r)!(r-1)!}$
 
-    $f_{Y_(r)Y_(s)}(y,z) = \frac{n!}{(n-s)!(s-r-1)!(r-1)!}[F(y)]^{r-1}f(y)[F(z) - F(s)]^{s-r-1}f(z)[1 - F(z)]^{n-r}$
+    $f_{Y_(r)Y_(s)}(y,z) $=$\\ \frac{n![F(y)]^{r-1}f(y)[F(z) - F(s)]^{s-r-1}f(z)[1 - F(z)]^{n-r}}{(n-s)!(s-r-1)!(r-1)!}[1 - F(y_{(r)})]^{n-r}$ \\
+    From $n$ choose first $r$
+    $f_{Y_{(1)},..,Y_{(r)}}(y_{1},.,y_{r})$ = $\frac{n!}{(n-r)!}([1 - F(y_{(r)})]^{n-r}) \prod^{r}_{i = 1}f(y_{(i)})$
 
     \end{minipage}
 };
