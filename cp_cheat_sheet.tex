@@ -364,7 +364,7 @@
 
     $f_{Y(r)}(y_r) $=$ \frac{n![F(y_r)]^{r-1}f(y_r)[1 - F(y_r)]^{n-r}}{(n-r)!(r-1)!}$
 
-    $f_{Y_(r)Y_(s)}(y,z) $=$\\ \frac{n![F(y)]^{r-1}f(y)[F(z) - F(s)]^{s-r-1}f(z)[1 - F(z)]^{n-r}}{(n-s)!(s-r-1)!(r-1)!}[1 - F(y_{(r)})]^{n-r}$ \\
+    $f_{Y_(r)Y_(s)}(y,z) $=$\\ \frac{n![F(y)]^{r-1}f(y)[F(z) - F(s)]^{s-r-1}f(z)[1 - F(z)]^{n-r}}{(n-s)!(s-r-1)!(r-1)!}$ \\
     From $n$ choose first $r$
     $f_{Y_{(1)},..,Y_{(r)}}(y_{1},.,y_{r})$ = $\frac{n!}{(n-r)!}([1 - F(y_{(r)})]^{n-r}) \prod^{r}_{i = 1}f(y_{(i)})$
 
@@ -457,6 +457,95 @@
 };
 %------------ APosterior Predicitive Density Header ---------------------
 \node[fancytitle, right=10pt] at (box.north west) {Posterior Predicitive Density};
+\end{tikzpicture}
+
+
+%------------ Cauchy Schwartz topic ---------------
+\begin{tikzpicture}
+\node [mybox] (box){%
+    \begin{minipage}{0.3\textwidth}
+    $|<a;b>|^2 \leq |a|^2 |b|^2$\\
+    $Cov(A,B)^2 \leq Var(A)Var(B)$
+    \end{minipage}
+};
+%------------ Cauchy Schwartz Header ---------------------
+\node[fancytitle, right=10pt] at (box.north west) {Cauchy Schwartz};
+\end{tikzpicture}
+
+%------------ Prob Orders topic ---------------
+\begin{tikzpicture}
+\node [mybox] (box){%
+    \begin{minipage}{0.3\textwidth}
+    $Y_n$ sequence of random variables.\\
+    $Y_n = o_p(n^{\alpha}) \iff Y_n / n^{\alpha} \xrightarrow{P} 0$\\
+    $Y_n = O_p(n^{\alpha}) \iff \forall \epsilon > 0 \exists K_{\epsilon}, n_{\epsilon}$:
+    $\mathbb{P}(|\frac{Y_n}{n^{\alpha}}| < K_{\epsilon}) > 1 - \epsilon$
+    \end{minipage}
+};
+%------------ Prob Orders Header ---------------------
+\node[fancytitle, right=10pt] at (box.north west) {Prob Orders};
+\end{tikzpicture}
+
+
+%------------ Identifiability topic ---------------
+\begin{tikzpicture}
+\node [mybox] (box){%
+    \begin{minipage}{0.3\textwidth}
+    $\forall \theta_1, \theta_2$
+    $\mathbb{P}_{\theta_2}\left(\frac{p(Y, \theta_1)}{p(Y, \theta_2)} = 1\right) < 1$
+    \end{minipage}
+};
+%------------ Identifiability Header ---------------------
+\node[fancytitle, right=10pt] at (box.north west) {Identifiability};
+\end{tikzpicture}
+
+
+%------------ Wald topic ---------------
+\begin{tikzpicture}
+\node [mybox] (box){%
+    \begin{minipage}{0.3\textwidth}
+    $E_{\theta_0}\left[
+    \log \frac{p(Y, \theta_1)}{p(Y, \theta_0)} = 1\right] < 0$
+    \end{minipage}
+};
+%------------ Wald topic Header ---------------------
+\node[fancytitle, right=10pt] at (box.north west) {Wald};
+\end{tikzpicture}
+
+%------------ Markov topic ---------------
+\begin{tikzpicture}
+\node [mybox] (box){%
+    \begin{minipage}{0.3\textwidth}
+    $X \geq 0, E[X] > 0, c > 0$\\
+    $\mathbb{P}(X > c) \leq \frac{E[X]}{c}$
+    \end{minipage}
+};
+%------------ Markov topic Header ---------------------
+\node[fancytitle, right=10pt] at (box.north west) {Markov};
+\end{tikzpicture}
+
+%------------ Chebychev topic ---------------
+\begin{tikzpicture}
+\node [mybox] (box){%
+    \begin{minipage}{0.3\textwidth}
+    $\mathbb{P}(|X - E[X]|> c) \leq \frac{Var[X]}{c^2}$
+    \end{minipage}
+};
+%------------ Chebychev Header ---------------------
+\node[fancytitle, right=10pt] at (box.north west) {Chebychev};
+\end{tikzpicture}
+
+
+%------------ Reg Mod topic ---------------
+\begin{tikzpicture}
+\node [mybox] (box){%
+    \begin{minipage}{0.3\textwidth}
+    Id, interior, reg lik, unique sol, i pos def
+    bounded expect deriv
+    \end{minipage}
+};
+%------------ Reg Mod Header ---------------------
+\node[fancytitle, right=10pt] at (box.north west) {Reg Mod};
 \end{tikzpicture}
 
 %------------ Another topic ---------------
